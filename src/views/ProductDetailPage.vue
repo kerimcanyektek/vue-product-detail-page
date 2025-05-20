@@ -16,7 +16,7 @@
         <div class="space-y-8">
           <ProductInfo
             :title="customTitle"
-            :description="customCategory"
+            :category="customCategory"
             :price="customPrice"
             @add-to-cart="showToast"
           />
