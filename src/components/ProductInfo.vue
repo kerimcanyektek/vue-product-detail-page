@@ -1,30 +1,29 @@
 <template>
   <div class="space-y-6">
-    <!-- Ürün Başlığı -->
+    <!-- Product Title -->
     <h1 class="text-3xl font-bold text-gray-900">
       {{ title }}
     </h1>
 
-    
-    <!-- Ürün Puanı -->
+    <!-- Stars -->
     <div class="flex items-center space-x-1 text-yellow-400 text-xl">
       <span>★★★★☆</span>
       <span class="text-sm text-gray-500">(4.5)</span>
     </div>
 
-    <!-- Ürün Kategorisi -->
+    <!-- Product Category -->
     <p class="text-gray-600 leading-relaxed">
       {{ category }}
     </p>
 
-    <!-- Ürün Fiyatı -->
+    <!-- Product Price -->
     <div class="flex items-center space-x-2">
       <span class="text-3xl font-extrabold text-green-600">
         {{ price }}₺
       </span>
     </div>
 
-    <!-- Butonlar -->
+    <!-- Buttons -->
     <div class="flex flex-col md:flex-row gap-4">
       <button @click="addToCart"
         class="w-full md:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition">
@@ -46,16 +45,14 @@ const props = defineProps<{
   price: number;
 }>();
 
-const emit = defineEmits<{
-  (e: 'add-to-cart'): void;
-  (e: 'buy-now'): void;
-}>();
-
 function addToCart() {
-  emit('add-to-cart');
+  alert('🎉 Ürün sepete eklendi!');
 }
 
 function buyNow() {
-  emit('buy-now');
+  alert('🚀 Hemen satın alma işlemi başlatılıyor...');
 }
 </script>
+
+<style scoped>
+</style>

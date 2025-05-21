@@ -21,8 +21,6 @@
           :alt="'Thumbnail ' + (index + 1)"
           class="w-full h-full object-cover"
         />
-
-        <!-- Selected Thumbnail -->
         <div
           v-if="selectedImage === img"
           class="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transition-all duration-300"
@@ -33,13 +31,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
-const props = defineProps<{
-  images: string[];
-}>();
+const images = ref<string[]>([]);
+const selectedImage = ref('');
 
-const selectedImage = ref(props.images[0]);
+async function fetchImages() {
+  try {
+    const res = await fetch('https://dummyjson.com/products/9');
+    const data = await res.json();
+    images.value = data.images;
+    selectedImage.value = data.images[0];
+  } catch (err) {
+    console.error('Görseller alınamadı:', err);
+  }
+}
+
+onMounted(fetchImages);
 
 function selectImage(img: string) {
   selectedImage.value = img;
